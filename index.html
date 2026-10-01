@@ -484,6 +484,8 @@
   @media (max-width:520px){ .contact-row{ grid-template-columns:1fr; gap:4px; } }
   .contact-row .role{ font-family:"Anton"; font-size:1rem; letter-spacing:.01em; color:var(--red); }
   .contact-row .deets{ display:grid; gap:4px; font-size:.95rem; }
+  .contact-row .person{ display:flex; flex-wrap:wrap; gap:4px 12px; align-items:baseline; }
+  .contact-row .person span{ font-weight:600; color:var(--ink-2); min-width:150px; }
   .contact-row .role-sub{ display:block; margin-top:4px; font-family:"IBM Plex Mono"; font-size:.72rem; letter-spacing:.04em; text-transform:uppercase; color:var(--steel); }
   .contact-row a{ text-decoration:none; }
   .contact-row a:hover{ text-decoration:underline; }
@@ -1235,9 +1237,10 @@
           <div class="contact-row">
             <div class="role">Sales</div>
             <div class="deets">
+              <div class="person"><span>Obry Ruzvidzo</span><a class="mono" href="tel:+263784771092">0784 771 092</a></div>
+              <div class="person"><span>Nicola Machingura</span><a class="mono" href="tel:+263776842512">0776 842 512</a></div>
               <a class="mono" href="tel:+263242779071">+263 242 779 071</a>
               <a class="mono" href="tel:+263772608210">+263 772 608 210</a>
-              <a class="mono" href="tel:+263776842512">+263 776 842 512</a>
               <a href="mailto:admin@meccautogen.com">admin@meccautogen.com</a>
             </div>
           </div>
