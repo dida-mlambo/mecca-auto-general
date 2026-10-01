@@ -398,13 +398,18 @@
 
   /* ---------- partners ---------- */
   .partner-wall{
-    display:flex; flex-wrap:wrap; gap:10px; margin-top:8px;
+    display:flex; flex-wrap:wrap; justify-content:center; gap:18px; margin-top:8px;
   }
-  .partner-chip{
-    font-family:"IBM Plex Mono"; font-size:.86rem;
-    border:1px solid var(--line-on-light); padding:9px 16px; color:var(--ink-2);
-    background:var(--paper);
+  .partner-logo{
+    flex:0 1 calc(25% - 14px); height:130px; padding:18px 22px;
+    display:flex; align-items:center; justify-content:center;
+    background:#fff; border:1px solid var(--line-on-light);
+    transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
   }
+  .partner-logo:hover{ transform:translateY(-3px); border-color:var(--red); box-shadow:0 10px 24px rgba(15,35,40,.10); }
+  .partner-logo img{ max-width:100%; max-height:100%; object-fit:contain; display:block; }
+  @media (max-width:820px){ .partner-logo{ flex-basis:calc(33.333% - 12px); } }
+  @media (max-width:560px){ .partner-wall{ gap:12px; } .partner-logo{ flex-basis:calc(50% - 6px); height:104px; padding:14px 16px; } }
 
   /* ---------- certifications ---------- */
   .cert-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:24px; }
@@ -1040,39 +1045,17 @@
         <p class="lede">A growing roster of organisations rely on Mecca Auto &amp; General to keep their vehicles on the road.</p>
       </div>
       <div class="partner-wall">
-        <span class="partner-chip">Farmec</span>
-        <span class="partner-chip">Toyota Zimbabwe</span>
-        <span class="partner-chip">Sinopower Commercial Vehicles</span>
-        <span class="partner-chip">Shacman</span>
-        <span class="partner-chip">D.A</span>
-        <span class="partner-chip">Fossil Contracting</span>
-        <span class="partner-chip">Bitumen World</span>
-        <span class="partner-chip">Impala Car Rental</span>
-        <span class="partner-chip">Exodus &amp; Company</span>
-        <span class="partner-chip">Massbreed</span>
-        <span class="partner-chip">Lovol Agriculture &amp; Construction</span>
-        <span class="partner-chip">Faramatsi Motors</span>
-        <span class="partner-chip">Optimus Motors</span>
-        <span class="partner-chip">Tacna</span>
-        <span class="partner-chip">Paddock Gears &amp; Engineering</span>
-        <span class="partner-chip">Byword Motors</span>
-        <span class="partner-chip">Tensor Systems</span>
-        <span class="partner-chip">R. Davis &amp; Co</span>
-        <span class="partner-chip">Tencraft Construction</span>
-        <span class="partner-chip">Masimba</span>
-        <span class="partner-chip">AutoPlus Solutions</span>
-        <span class="partner-chip">Top Spin International</span>
-        <span class="partner-chip">AfriAuto Solutions</span>
-        <span class="partner-chip">MotorTorque</span>
-        <span class="partner-chip">Kunatsa Estate</span>
-        <span class="partner-chip">GreenFuel</span>
-        <span class="partner-chip">GER Garage Equipment Repairs</span>
-        <span class="partner-chip">TIFF Investments</span>
-        <span class="partner-chip">Supreme Panel Beaters</span>
-        <span class="partner-chip">PanAfrica Broadband</span>
-        <span class="partner-chip">BR Toyota</span>
-        <span class="partner-chip">Dai-Ichi Auto</span>
-        <span class="partner-chip">J.R. Goddard Contracting</span>
+        <div class="partner-logo"><img src="images/clients/farmec.png" alt="Farmec logo" loading="lazy"></div>
+        <div class="partner-logo"><img src="images/clients/toyota-zimbabwe.png" alt="Toyota Zimbabwe logo" loading="lazy"></div>
+        <div class="partner-logo"><img src="images/clients/shacman.png" alt="Shacman logo" loading="lazy"></div>
+        <div class="partner-logo"><img src="images/clients/impala-car-rental.png" alt="Impala Car Rental logo" loading="lazy"></div>
+        <div class="partner-logo"><img src="images/clients/exodus-and-company.png" alt="Exodus &amp; Company logo" loading="lazy"></div>
+        <div class="partner-logo"><img src="images/clients/massbreed.png" alt="Massbreed logo" loading="lazy"></div>
+        <div class="partner-logo"><img src="images/clients/tacna.png" alt="Tacna logo" loading="lazy"></div>
+        <div class="partner-logo"><img src="images/clients/autoplus-solutions.png" alt="AutoPlus Solutions logo" loading="lazy"></div>
+        <div class="partner-logo"><img src="images/clients/afriauto-solutions.png" alt="AfriAuto Solutions logo" loading="lazy"></div>
+        <div class="partner-logo"><img src="images/clients/tiff-investments.png" alt="TIFF Investments logo" loading="lazy"></div>
+        <div class="partner-logo"><img src="images/clients/topclass-autobody.png" alt="Topclass Autobody logo" loading="lazy"></div>
       </div>
     </div>
   </section>
