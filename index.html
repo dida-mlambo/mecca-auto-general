@@ -191,13 +191,30 @@
     background:
       repeating-linear-gradient(115deg, rgba(195,31,46,.9) 0 46px, transparent 46px 120px);
     clip-path:polygon(58% 0, 100% 0, 100% 100%, 40% 100%);
-    opacity:.9;
+    opacity:.9; z-index:1;
+  }
+  .hero-video{
+    position:absolute; inset:0; width:100%; height:100%;
+    object-fit:cover; object-position:50% 40%; z-index:0; pointer-events:none;
+  }
+  .hero.has-video::before{ opacity:.45; }
+  .hero.has-video::after{
+    background:
+      linear-gradient(90deg, rgba(21,21,26,.88) 0%, rgba(21,21,26,.70) 45%, rgba(21,21,26,.35) 100%),
+      linear-gradient(180deg, rgba(21,21,26,0) 0%, rgba(21,21,26,.55) 78%, var(--ink) 100%);
+  }
+  @media (max-width:760px){
+    .hero.has-video::after{
+      background:
+        linear-gradient(180deg, rgba(21,21,26,.72) 0%, rgba(21,21,26,.66) 60%, var(--ink) 100%);
+    }
   }
   .hero::after{
     content:"";
     position:absolute; inset:0;
     background:
       linear-gradient(180deg, rgba(21,21,26,0) 0%, rgba(21,21,26,.55) 78%, var(--ink) 100%);
+    z-index:1;
   }
   .hero-inner{
     position:relative; z-index:2;
@@ -722,7 +739,11 @@
 <main id="top">
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero has-video">
+    <video class="hero-video" autoplay muted loop playsinline preload="none" aria-hidden="true"
+      poster="images/workshop-backdrop-wide-poster.jpg"
+      data-src-wide="images/workshop-backdrop-wide.mp4" data-poster-wide="images/workshop-backdrop-wide-poster.jpg"
+      data-src-tall="images/workshop-backdrop.mp4" data-poster-tall="images/workshop-backdrop-poster.jpg"></video>
     <div class="hero-inner">
       <div class="hero-tag"><i></i> HARARE &amp; GWERU · AUTHORISED PARTS &amp; SERVICE</div>
       <h1>GENUINE PARTS.<br><span class="line2">HONEST WORK.</span></h1>
@@ -1375,6 +1396,22 @@
   if(!('IntersectionObserver' in window)) return load();
   var io=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ load(); io.disconnect(); } },{rootMargin:'800px 0px'});
   io.observe(wall);
+})();
+
+// Hero backdrop video: landscape cut on wide screens, upright cut on phones
+(function(){
+  var v=document.querySelector('.hero-video'); if(!v) return;
+  var tall=window.matchMedia('(max-width:760px)').matches;
+  v.poster=tall? v.dataset.posterTall : v.dataset.posterWide;
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var saveData=navigator.connection && navigator.connection.saveData;
+  if(reduce || saveData) return;
+  v.muted=true; v.defaultMuted=true;
+  var start=function(){ v.src=tall? v.dataset.srcTall : v.dataset.srcWide; var p=v.play(); if(p&&p.catch) p.catch(function(){}); };
+  if(document.readyState==='complete') start(); else window.addEventListener('load', start);
+  document.addEventListener('visibilitychange', function(){
+    if(document.visibilityState==='visible' && v.src && v.paused){ var p=v.play(); if(p&&p.catch) p.catch(function(){}); }
+  });
 })();
 </script>
 
